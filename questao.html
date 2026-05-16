@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PCDF — Questões Interativas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+
+<style>
+  /* =========================================
+     ESTILOS EXCLUSIVOS DAS QUESTÕES
+     ========================================= */
+  .questao {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 35px;
+    margin-bottom: 35px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(56,189,248,0.15);
+    color: #7dd3fc;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .questao h2 {
+    color: var(--title-color);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+  }
+
+  .enunciado {
+    line-height: 1.9;
+    margin-bottom: 25px;
+    color: var(--text);
+    font-size: 1.05rem;
+  }
+
+  .alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .alt {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 1rem;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .alt:hover:not(:disabled) {
+    transform: translateX(5px);
+    border-color: #38bdf8;
+    background: rgba(56,189,248,0.05);
+  }
+
+  .alt.selecionada {
+    border: 1px solid #38bdf8;
+    background: rgba(56,189,248,0.12);
+  }
+
+  .certa {
+    background: rgba(34,197,94,0.18) !important;
+    border: 1px solid rgba(34,197,94,0.5) !important;
+  }
+
+  .errada {
+    background: rgba(239,68,68,0.18) !important;
+    border: 1px solid rgba(239,68,68,0.5) !important;
+  }
+
+  .alt:disabled {
+    opacity: 1 !important;
+    -webkit-text-fill-color: var(--text) !important;
+    color: var(--text) !important;
+    cursor: default;
+  }
+
+  .btn-responder {
+    margin-top: 22px;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg, #0ea5e9, #6366f1);
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  }
+
+  .btn-responder:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+  }
+
+  .btn-responder:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .resposta {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.25);
+    line-height: 1.8;
+    color: var(--text);
+    display: none; /* A explicação fica escondida até responder */
+  }
+
+  .navegacao-questoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    background: var(--card);
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-nav {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 14px;
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-nav:hover:not(:disabled) {
+    background: rgba(56,189,248,0.15);
+    border-color: #38bdf8;
+    color: var(--title-color);
+  }
+
+  .btn-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .contador {
+    color: var(--title-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="menu-container"></div>
+<script src="menu.js"></script>
+
+<div class="container">
+
+  <div class="hero" style="margin-top: 20px;">
+    <div class="badge">PCDF 2026 • Treinamento Prático</div>
+    <h1>Caderno de Questões</h1>
+    <p>Simulador interativo com gabarito comentado. Teste seus conhecimentos e adapte o modelo com novas questões posteriormente.</p>
+  </div>
+
+  <main style="max-width: 900px; margin: 0 auto;">
+    
+    <div class="questao" style="display: block;">
+      <div class="tag">Questão 1</div>
+      <h2>Fingerprinting</h2>
+      <div class="enunciado">
+        Assinale a alternativa que corresponde a uma técnica de rastreamento e identificação que consiste na identificação única de um dispositivo ou usuário através da coleta e combinação de características técnicas específicas, sem a necessidade de arquivos armazenados (como cookies) ou contas logadas.
+      </div>
+      <div class="alternativas">
+        <button class="alt" data-correta="false">A) Cookies</button>
+        <button class="alt" data-correta="true">B) Fingerprinting</button>
+        <button class="alt" data-correta="false">C) Rastreamento por URL</button>
+        <button class="alt" data-correta="false">D) ID de usuário (UID)</button>
+        <button class="alt" data-correta="false">E) Pixels de rastreamento</button>
+      </div>
+      <button class="btn-responder">✅ Responder</button>
+      <div class="resposta">
+        <strong>Gabarito: Letra B.</strong> O <em>Fingerprinting</em> identifica dispositivos através das características técnicas do navegador, sistema operacional, resolução da tela e plugins, sem depender de cookies.
+      </div>
+    </div>
+
+    <div class="questao" style="display: none;">
+      <div class="tag">Questão 2</div>
+      <h2>Surface Web</h2>
+      <div class="enunciado">
+        A camada da internet publicamente acessível cujas páginas são indexadas pelos mecanismos de busca dos principais navegadores é conhecida como:
+      </div>
+      <div class="alternativas">
+        <button class="alt" data-correta="false">A) Dark Web</button>
+        <button class="alt" data-correta="false">B) Extranet</button>
+        <button class="alt" data-correta="false">C) Deep Web</button>
+        <button class="alt" data-correta="false">D) Darknet</button>
+        <button class="alt" data-correta="true">E) Surface Web</button>
+      </div>
+      <button class="btn-responder">✅ Responder</button>
+      <div class="resposta">
+        <strong>Gabarito: Letra E.</strong> A <em>Surface Web</em> é a parte pública da internet indexada por mecanismos de busca como Google, Bing e Yahoo.
+      </div>
+    </div>
+
+    <div class="questao" style="display: none;">
+      <div class="tag">Questão 3</div>
+      <h2>DNS</h2>
+      <div class="enunciado">
+        O DNS (Domain Name System) é um sistema que traduz nomes de domínio em endereços IP (1ª parte) e que opera na camada de transporte do modelo TCP/IP (2ª parte), sendo o principal responsável por automatizar as configurações de dispositivos em uma rede de computadores (3ª parte).<br><br>
+        Quais partes estão corretas?
+      </div>
+      <div class="alternativas">
+        <button class="alt" data-correta="true">A) Apenas a 1ª parte</button>
+        <button class="alt" data-correta="false">B) Apenas a 3ª parte</button>
+        <button class="alt" data-correta="false">C) Apenas a 1ª e a 2ª partes</button>
+        <button class="alt" data-correta="false">D) Apenas a 2ª e a 3ª partes</button>
+        <button class="alt" data-correta="false">E) Todas as partes</button>
+      </div>
+      <button class="btn-responder">✅ Responder</button>
+      <div class="resposta">
+        <strong>Gabarito: Letra A.</strong> O DNS traduz nomes em IPs (1ª correta). Ele opera na camada de <strong>aplicação</strong> (2ª errada). O responsável por automatizar configurações de rede é o <strong>DHCP</strong> (3ª errada).
+      </div>
+    </div>
+
+    <div class="questao" style="display: none;">
+      <div class="tag">Questão 4</div>
+      <h2>Spoofing</h2>
+      <div class="enunciado">
+        Em relação à segurança cibernética, qual das alternativas abaixo melhor define o que é spoofing?
+      </div>
+      <div class="alternativas">
+        <button class="alt" data-correta="false">A) Método de tentativa e erro usado para descobrir senhas.</button>
+        <button class="alt" data-correta="false">B) Worm.</button>
+        <button class="alt" data-correta="false">C) Ataque DDoS.</button>
+        <button class="alt" data-correta="true">D) Falsificação de identidade.</button>
+        <button class="alt" data-correta="false">E) Ransomware.</button>
+      </div>
+      <button class="btn-responder">✅ Responder</button>
+      <div class="resposta">
+        <strong>Gabarito: Letra D.</strong> <em>Spoofing</em> é a técnica de falsificar a identidade digital (como IP ou e-mail) para simular uma fonte confiável e obter acesso não autorizado a dados.
+      </div>
+    </div>
+
+    <div class="navegacao-questoes">
+      <button id="btn-anterior" class="btn-nav" disabled>⬅️ Anterior</button>
+      <div id="contador" class="contador">Questão 1 de 4</div>
+      <button id="btn-proxima" class="btn-nav">Próxima ➡️</button>
+    </div>
+
+  </main>
+
+  <div class="footer">
+    PCDF Delegado • Treinamento Prático Integrado
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. LÓGICA DO CARROSSEL DE QUESTÕES ---
+    const todasAsQuestoes = document.querySelectorAll('.questao');
+    const botaoVoltar = document.getElementById('btn-anterior');
+    const botaoAvancar = document.getElementById('btn-proxima');
+    const displayContador = document.getElementById('contador');
+    let questaoAtual = 0;
+
+    function exibirQuestao(indice) {
+      // Esconde todas as questões
+      todasAsQuestoes.forEach(function(q) {
+        q.style.display = 'none';
+      });
+      
+      // Mostra apenas a questão do índice atual
+      todasAsQuestoes[indice].style.display = 'block';
+      
+      // Atualiza o contador de texto
+      displayContador.innerText = 'Questão ' + (indice + 1) + ' de ' + todasAsQuestoes.length;
+      
+      // Trava os botões de avançar/voltar nos limites
+      botaoVoltar.disabled = (indice === 0);
+      botaoAvancar.disabled = (indice === todasAsQuestoes.length - 1);
+    }
+
+    botaoVoltar.addEventListener('click', function() {
+      if (questaoAtual > 0) {
+        questaoAtual--;
+        exibirQuestao(questaoAtual);
+      }
+    });
+
+    botaoAvancar.addEventListener('click', function() {
+      if (questaoAtual < todasAsQuestoes.length - 1) {
+        questaoAtual++;
+        exibirQuestao(questaoAtual);
+      }
+    });
+
+
+    // --- 2. LÓGICA DE CLICAR E SELECIONAR ALTERNATIVA ---
+    const todasAsAlternativas = document.querySelectorAll('.alt');
+    
+    todasAsAlternativas.forEach(function(botao) {
+      botao.addEventListener('click', function() {
+        if (this.disabled) return; // Não faz nada se a questão já foi respondida
+        
+        const grupo = this.closest('.alternativas');
+        const botoesDoGrupo = grupo.querySelectorAll('.alt');
+        
+        // Remove a cor azul de todas as alternativas deste grupo
+        botoesDoGrupo.forEach(function(b) {
+          b.classList.remove('selecionada');
+        });
+        
+        // Coloca a cor azul na alternativa que foi clicada
+        this.classList.add('selecionada');
+      });
+    });
+
+
+    // --- 3. LÓGICA DE CORRIGIR (BOTÃO RESPONDER) ---
+    const botoesResponder = document.querySelectorAll('.btn-responder');
+    
+    botoesResponder.forEach(function(botaoResp) {
+      botaoResp.addEventListener('click', function() {
+        const questao = this.closest('.questao');
+        const opcaoMarcada = questao.querySelector('.alt.selecionada');
+
+        if (!opcaoMarcada) {
+          alert('Por favor, clique em uma alternativa antes de responder.');
+          return;
+        }
+
+        const ehCorreta = (opcaoMarcada.getAttribute('data-correta') === 'true');
+        const alternativasDestaQuestao = questao.querySelectorAll('.alt');
+
+        // Bloqueia as alternativas para o usuário não mudar depois de ver a resposta
+        alternativasDestaQuestao.forEach(function(b) {
+          b.disabled = true;
+        });
+
+        // Pinta de Verde ou Vermelho
+        if (ehCorreta) {
+          opcaoMarcada.classList.add('certa');
+        } else {
+          opcaoMarcada.classList.add('errada');
+          // Mostra a opção que era a correta
+          const alternativaCorreta = questao.querySelector('.alt[data-correta="true"]');
+          if (alternativaCorreta) {
+            alternativaCorreta.classList.add('certa');
+          }
+        }
+
+        // Mostra o texto com a explicação
+        questao.querySelector('.resposta').style.display = 'block';
+        
+        // Desativa o botão responder
+        this.disabled = true;
+        this.innerHTML = '✔ Respondido';
+      });
+    });
+
+  });
+</script>
+
+</body>
+</html>

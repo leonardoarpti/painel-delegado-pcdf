@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delegado PCDF — Painel de Estudos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Estilos exclusivos do Dashboard da página inicial */
+    .dashboard-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .info-card-unified {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px;
+    }
+    .resumo-edital-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .resumo-item {
+      background: var(--card-light);
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .resumo-item h3 { 
+      font-size: 0.75rem; 
+      color: var(--title-color); 
+      text-transform: uppercase; 
+    }
+    .resumo-item p { 
+      font-size: 1rem; 
+      font-weight: 700; 
+      color: var(--text); 
+      margin-top: 5px; 
+    }
+    
+    .discursiva-row td {
+      background: rgba(129, 140, 248, 0.1) !important;
+      font-weight: 600;
+    }
+    body.light-mode .discursiva-row td {
+      background: rgba(99, 102, 241, 0.15) !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="menu-container"></div>
+<script src="menu.js"></script>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>POLÍCIA CIVIL DO DF (PCDF)</h1>
+    <p>Estrutura oficial e ferramentas de estudo focadas no cargo de <strong>Delegado de Polícia</strong>.</p>
+  </section>
+
+  <div class="main-layout">
+
+    <div id="sidebar-container"></div>
+
+    <main class="content-area">
+      
+      <div class="dashboard-top">
+        <div class="info-card info-card-unified">
+          <h2 style="font-size: 0.9rem; margin-bottom: 10px;">📅 Hoje</h2>
+          <div id="data-atual" class="highlight" style="font-size: 1.3rem;">...</div>
+          <div id="dia-semana" style="color: #94a3b8; font-size: 0.85rem;">...</div>
+        </div>
+
+        <div class="info-card info-card-unified">
+          <h2 style="font-size: 0.9rem; margin-bottom: 10px;">🎯 Prova</h2>
+          <div class="highlight" style="font-size: 1.3rem;">05/07/2026</div>
+          <div style="color: #94a3b8; font-size: 0.85rem;">Brasília, DF</div>
+        </div>
+
+        <div class="info-card info-card-unified">
+          <h2 style="font-size: 0.9rem; margin-bottom: 10px;">⏳ Faltam</h2>
+          <div id="dias-prova" class="highlight" style="font-size: 1.5rem; color: #22c55e;">...</div>
+          <div style="color: #94a3b8; font-size: 0.85rem;">para a aprovação</div>
+        </div>
+      </div>
+
+      <section style="margin-bottom: 40px;">
+        <div class="info-card" style="padding: 25px;">
+          <h2 style="color: #7dd3fc; margin-bottom: 15px; font-size: 1.4rem;">📑 Resumo Estratégico</h2>
+          <div class="resumo-edital-grid">
+            <div class="resumo-item"><h3>Cargo</h3><p>Delegado</p></div>
+            <div class="resumo-item"><h3>Banca</h3><p>Cebraspe</p></div>
+            <div class="resumo-item"><h3>Objetiva</h3><p>120 Questões</p></div>
+            <div class="resumo-item"><h3>Discursiva</h3><p>3 Questões</p></div>
+            <div class="resumo-item"><h3>Prática</h3><p>1 Peça</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="table-wrapper">
+        <div class="table-title" style="font-size: 1.5rem;">ESTRUTURA DA PROVA</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Disciplinas</th>
+              <th>Estrutura</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="8" class="highlight" style="font-weight: 700; color: #38bdf8;">PROVA<br>OBJETIVA</td>
+              <td class="subjects">I – Direito Administrativo e Leg. Complementar</td>
+              <td rowspan="8" style="vertical-align: middle;"><strong>120 Questões</strong><br><span style="font-size: 0.85rem; color: #94a3b8;">(Padrão Certo/Errado)</span></td>
+            </tr>
+            <tr><td class="subjects">II – Direito Constitucional e Leg. Complementar</td></tr>
+            <tr><td class="subjects">III – Direito Civil/Empresarial e Leg. Complementar</td></tr>
+            <tr><td class="subjects">IV – Direito Penal e Leg. Complementar</td></tr>
+            <tr><td class="subjects">V – Direito Tributário e Leg. Complementar</td></tr>
+            <tr><td class="subjects">VI – Medicina Legal</td></tr>
+            <tr><td class="subjects">VII – Direito Processual Penal e Leg. Complementar</td></tr>
+            <tr><td class="subjects">VIII – Direito Ambiental e Leg. Complementar</td></tr>
+            
+            <tr class="discursiva-row">
+              <td class="highlight" style="color: #818cf8;">PROVA<br>DISCURSIVA</td>
+              <td class="subjects">
+                <ul style="list-style: none; margin: 0; padding: 0; font-size: 0.9rem;">
+                  <li>• Dir. Administrativo</li>
+                  <li>• Dir. Constitucional</li>
+                  <li>• Dir. Penal</li>
+                  <li>• Dir. Processual Penal</li>
+                  <li>• Dir. Tributário</li>
+                  <li>• Dir. Civil/Empresarial</li>
+                  <li>• Dir. Ambiental</li>
+                </ul>
+              </td>
+              <td><strong>3 Questões<br>+<br>1 Peça Prática</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 15px;">
+          * Distribuição sugerida em igual proporção técnica para fins de visualização do gráfico.
+        </p>
+      </section>
+
+      <section class="chart-section" style="margin-top: 30px;">
+        <div class="chart-card">
+          <h2 style="font-size: 1.4rem;">📊 Distribuição Estimada das Questões</h2>
+          <div style="height: 250px; position: relative;">
+            <canvas id="graficoMaterias"></canvas>
+          </div>
+          <div id="legenda-customizada" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; font-size: 0.9rem;"></div>
+        </div>
+      </section>
+
+    </main>
+  </div> 
+  
+  <div class="footer">
+    PCDF Delegado • Painel Integrado de Estudos
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Cálculo Dinâmico de Datas e Contador Regressivo
+    const dataProva = new Date("2026-07-05T00:00:00");
+    const hoje = new Date();
+    const diasDaSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+    
+    document.getElementById("data-atual").innerText = hoje.toLocaleDateString('pt-BR');
+    document.getElementById("dia-semana").innerText = diasDaSemana[hoje.getDay()];
+
+    const diferenca = dataProva - hoje;
+    const diasFaltando = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
+    const elDias = document.getElementById("dias-prova");
+    
+    if (diasFaltando > 0) {
+      elDias.innerText = diasFaltando + " dias";
+    } else if (diasFaltando === 0) {
+      elDias.innerText = "É hoje!";
+    } else {
+      elDias.innerText = "Concluída";
+    }
+
+    // Gráfico Chart.js
+    const ctx = document.getElementById('graficoMaterias').getContext('2d');
+    const titulos = ['Administrativo', 'Constitucional', 'Civil/Empresarial', 'Penal', 'Tributário', 'Medicina Legal', 'Processo Penal', 'Ambiental'];
+    const valores = [15, 15, 15, 15, 15, 15, 15, 15]; 
+    const cores = ['#38bdf8', '#6366f1', '#22c55e', '#f59e0b', '#ef4444', '#ec4899', '#8b5cf6', '#14b8a6'];
+
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: titulos,
+        datasets: [{ data: valores, backgroundColor: cores, borderWidth: 0 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        cutout: '75%'
+      }
+    });
+
+    // Criar a legenda customizada
+    const containerLegenda = document.getElementById('legenda-customizada');
+    titulos.forEach((titulo, i) => {
+      const item = document.createElement('div');
+      item.innerHTML = `<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background: ${cores[i]}; margin-right:5px;"></span> ${titulo}`;
+      containerLegenda.appendChild(item);
+    });
+  });
+</script>
+
+</body>
+</html>
