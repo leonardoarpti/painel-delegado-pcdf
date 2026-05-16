@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CF/88 - Estrutura dos Títulos</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg, #0f172a, #111827);
+      color: #f1f5f9;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container{
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .header{
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1{
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .header p{
+      color: #cbd5e1;
+      font-size: 1.1rem;
+    }
+
+   .grid{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+    .card{
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: #38bdf8;
+      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+    }
+
+    .card::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    }
+
+ .top{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+    .check{
+      transform: scale(1.5);
+      cursor: pointer;
+      accent-color: #22c55e;
+      margin-top: 6px;
+    }
+
+    h2{
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #f8fafc;
+      flex: 1;
+    }
+
+    .articles{
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.15);
+      color: #7dd3fc;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .description{
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .chapters{
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chapters h3{
+      margin-bottom: 12px;
+      color: #38bdf8;
+      font-size: 1rem;
+    }
+
+ul{
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
+}
+
+  li{
+  margin-bottom: 12px;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+    .completed{
+      opacity: 0.65;
+      border-color: #22c55e !important;
+    }
+
+    .completed::before{
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .footer{
+      margin-top: 40px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 768px){
+      .header h1{
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Constituição Federal de 1988</h1>
+      <p>Estrutura Completa dos 9 Títulos da CF/88</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- TITULO I -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO I - Dos Princípios Fundamentais</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 1º ao 4º</span>
+
+        <div class="description">
+          Estabelece os fundamentos da República Federativa do Brasil, objetivos fundamentais e princípios das relações internacionais.
+        </div>
+      </div>
+
+      <!-- TITULO II -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO II - Direitos e Garantias Fundamentais</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 5º ao 17</span>
+
+        <div class="description">
+          Reúne os direitos fundamentais assegurados aos cidadãos brasileiros.
+        </div>
+
+        <div class="chapters">
+          <h3>5 Capítulos</h3>
+          <ul>
+            <li>Direitos Individuais e Coletivos</li>
+            <li>Direitos Sociais</li>
+            <li>Nacionalidade</li>
+            <li>Direitos Políticos</li>
+            <li>Partidos Políticos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO III -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO III - Da Organização do Estado</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 18 ao 43</span>
+
+        <div class="description">
+          Define a estrutura político-administrativa do Estado brasileiro.
+        </div>
+
+        <div class="chapters">
+          <h3>7 Capítulos</h3>
+          <ul>
+            <li>Organização Político-Administrativa</li>
+            <li>União</li>
+            <li>Estados Federados</li>
+            <li>Municípios</li>
+            <li>Distrito Federal e Territórios</li>
+            <li>Intervenção</li>
+            <li>Administração Pública</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO IV -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO IV - Da Organização dos Poderes</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 44 ao 135</span>
+
+        <div class="description">
+          Estrutura e competências dos poderes da República.
+        </div>
+
+        <div class="chapters">
+          <h3>4 Capítulos</h3>
+          <ul>
+            <li>Poder Legislativo</li>
+            <li>Poder Executivo</li>
+            <li>Poder Judiciário</li>
+            <li>Funções Essenciais à Justiça</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO V -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO V - Defesa do Estado e Instituições Democráticas</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 136 ao 144</span>
+
+        <div class="description">
+          Trata dos mecanismos de defesa do Estado e da segurança pública.
+        </div>
+
+        <div class="chapters">
+          <h3>3 Capítulos</h3>
+          <ul>
+            <li>Estado de Defesa e Estado de Sítio</li>
+            <li>Forças Armadas</li>
+            <li>Segurança Pública</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO VI -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO VI - Da Tributação e do Orçamento</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 145 ao 169</span>
+
+        <div class="description">
+          Define regras tributárias e organização financeira do Estado.
+        </div>
+
+        <div class="chapters">
+          <h3>2 Capítulos</h3>
+          <ul>
+            <li>Sistema Tributário Nacional</li>
+            <li>Finanças Públicas</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO VII -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO VII - Ordem Econômica e Financeira</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 170 ao 192</span>
+
+        <div class="description">
+          Regula os princípios da atividade econômica e do sistema financeiro.
+        </div>
+
+        <div class="chapters">
+          <h3>4 Capítulos</h3>
+          <ul>
+            <li>Princípios Gerais da Atividade Econômica</li>
+            <li>Política Urbana</li>
+            <li>Política Agrícola e Fundiária</li>
+            <li>Sistema Financeiro Nacional</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO VIII -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO VIII - Da Ordem Social</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 193 ao 232</span>
+
+        <div class="description">
+          Abrange os direitos sociais e áreas essenciais ao bem-estar coletivo.
+        </div>
+
+        <div class="chapters">
+          <h3>8 Capítulos</h3>
+          <ul>
+            <li>Seguridade Social</li>
+            <li>Saúde</li>
+            <li>Previdência Social</li>
+            <li>Assistência Social</li>
+            <li>Educação, Cultura e Esporte</li>
+            <li>Ciência e Tecnologia</li>
+            <li>Meio Ambiente</li>
+            <li>Família, Criança, Adolescente, Idoso e Índios</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TITULO IX -->
+      <div class="card">
+        <div class="top">
+          <h2>TÍTULO IX - Disposições Constitucionais Gerais</h2>
+          <input type="checkbox" class="check">
+        </div>
+
+        <span class="articles">Art. 233 ao 250</span>
+
+        <div class="description">
+          Contém normas constitucionais finais e disposições gerais da Constituição.
+        </div>
+
+        <div class="chapters">
+          <h3>Observação</h3>
+          <ul>
+            <li>Não possui divisões relevantes em capítulos.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Constituição Federal de 1988 • Painel de Estudos
+    </div>
+
+  </div>
+
+  <script>
+    const checks = document.querySelectorAll('.check');
+
+    checks.forEach(check => {
+      check.addEventListener('change', function(){
+        const card = this.closest('.card');
+
+        if(this.checked){
+          card.classList.add('completed');
+        } else {
+          card.classList.remove('completed');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
