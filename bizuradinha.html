@@ -6,6 +6,7 @@
   <title>CF/88 - Estrutura dos Títulos</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -27,13 +28,14 @@
 
     .header{
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .header h1{
       font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #38bdf8;
+      font-weight: 700;
     }
 
     .header p{
@@ -41,28 +43,23 @@
       font-size: 1.1rem;
     }
 
-   .grid{
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+    .grid{
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
 
     .card{
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 24px;
+      border-radius: 28px;
+      padding: 35px;
       backdrop-filter: blur(10px);
-      transition: 0.3s ease;
+      transition: 0.35s ease;
       position: relative;
       overflow: hidden;
       text-align: center;
-    }
-
-    .card:hover{
-      transform: translateY(-6px);
-      border-color: #38bdf8;
-      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+      cursor: pointer;
     }
 
     .card::before{
@@ -73,91 +70,135 @@
       width: 100%;
       height: 5px;
       background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      transition: 0.3s ease;
     }
 
- .top{
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-    .check{
-      transform: scale(1.5);
-      cursor: pointer;
-      accent-color: #22c55e;
-      margin-top: 6px;
+    .card:hover{
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+      box-shadow: 0 10px 35px rgba(56,189,248,0.15);
+    }
+
+    .card.active{
+      border-color: #22c55e;
+      background: rgba(34,197,94,0.10);
+      box-shadow: 0 0 30px rgba(34,197,94,0.18);
+    }
+
+    .card.active::before{
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .card.active h2{
+      color: #86efac;
+    }
+
+    .top{
+      margin-bottom: 18px;
     }
 
     h2{
-      font-size: 1.2rem;
+      font-size: 1.8rem;
       line-height: 1.4;
       color: #f8fafc;
-      flex: 1;
+      transition: 0.3s ease;
     }
 
     .articles{
       display: inline-block;
-      margin-bottom: 14px;
-      padding: 6px 12px;
+      margin-bottom: 22px;
+      padding: 10px 18px;
       border-radius: 999px;
       background: rgba(56,189,248,0.15);
       color: #7dd3fc;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
     }
 
     .description{
       color: #cbd5e1;
-      line-height: 1.7;
-      font-size: 0.98rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      max-width: 900px;
+      margin: auto;
     }
 
     .chapters{
-      margin-top: 18px;
-      padding-top: 18px;
+      margin-top: 30px;
+      padding-top: 30px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .chapters h3{
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       color: #38bdf8;
+      font-size: 1.2rem;
+    }
+
+    .chapter-box{
+      margin-top: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 22px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chapter-box p{
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      color: #e2e8f0;
       font-size: 1rem;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
-ul{
-  list-style-position: inside;
-  padding-left: 0;
-  margin: 0;
-}
-
-  li{
-  margin-bottom: 12px;
-  color: #e2e8f0;
-  text-align: center;
-}
-
-    .completed{
-      opacity: 0.65;
-      border-color: #22c55e !important;
-    }
-
-    .completed::before{
-      background: linear-gradient(90deg, #22c55e, #16a34a);
+    .chapter-box p:hover{
+      background: rgba(56,189,248,0.10);
+      border-color: rgba(56,189,248,0.25);
+      color: #7dd3fc;
+      transform: translateY(-2px);
     }
 
     .footer{
-      margin-top: 40px;
+      margin-top: 50px;
       text-align: center;
       color: #94a3b8;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     @media(max-width: 768px){
+
+      body{
+        padding: 20px 14px;
+      }
+
       .header h1{
         font-size: 2.2rem;
       }
+
+      h2{
+        font-size: 1.35rem;
+      }
+
+      .card{
+        padding: 24px;
+      }
+
+      .chapter-box{
+        padding: 16px;
+      }
+
     }
+
   </style>
 </head>
 
@@ -176,7 +217,6 @@ ul{
       <div class="card">
         <div class="top">
           <h2>TÍTULO I - Dos Princípios Fundamentais</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 1º ao 4º</span>
@@ -188,9 +228,9 @@ ul{
 
       <!-- TITULO II -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO II - Direitos e Garantias Fundamentais</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 5º ao 17</span>
@@ -200,22 +240,26 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>5 Capítulos</h3>
-          <ul>
-            <li>Direitos Individuais e Coletivos</li>
-            <li>Direitos Sociais</li>
-            <li>Nacionalidade</li>
-            <li>Direitos Políticos</li>
-            <li>Partidos Políticos</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Direitos Individuais e Coletivos</p>
+            <p>Direitos Sociais</p>
+            <p>Nacionalidade</p>
+            <p>Direitos Políticos</p>
+            <p>Partidos Políticos</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO III -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO III - Da Organização do Estado</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 18 ao 43</span>
@@ -225,24 +269,28 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>7 Capítulos</h3>
-          <ul>
-            <li>Organização Político-Administrativa</li>
-            <li>União</li>
-            <li>Estados Federados</li>
-            <li>Municípios</li>
-            <li>Distrito Federal e Territórios</li>
-            <li>Intervenção</li>
-            <li>Administração Pública</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Organização Político-Administrativa</p>
+            <p>União</p>
+            <p>Estados Federados</p>
+            <p>Municípios</p>
+            <p>Distrito Federal e Territórios</p>
+            <p>Intervenção</p>
+            <p>Administração Pública</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO IV -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO IV - Da Organização dos Poderes</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 44 ao 135</span>
@@ -252,21 +300,25 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>4 Capítulos</h3>
-          <ul>
-            <li>Poder Legislativo</li>
-            <li>Poder Executivo</li>
-            <li>Poder Judiciário</li>
-            <li>Funções Essenciais à Justiça</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Poder Legislativo</p>
+            <p>Poder Executivo</p>
+            <p>Poder Judiciário</p>
+            <p>Funções Essenciais à Justiça</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO V -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO V - Defesa do Estado e Instituições Democráticas</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 136 ao 144</span>
@@ -276,20 +328,24 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>3 Capítulos</h3>
-          <ul>
-            <li>Estado de Defesa e Estado de Sítio</li>
-            <li>Forças Armadas</li>
-            <li>Segurança Pública</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Estado de Defesa e Estado de Sítio</p>
+            <p>Forças Armadas</p>
+            <p>Segurança Pública</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO VI -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO VI - Da Tributação e do Orçamento</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 145 ao 169</span>
@@ -299,19 +355,23 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>2 Capítulos</h3>
-          <ul>
-            <li>Sistema Tributário Nacional</li>
-            <li>Finanças Públicas</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Sistema Tributário Nacional</p>
+            <p>Finanças Públicas</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO VII -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO VII - Ordem Econômica e Financeira</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 170 ao 192</span>
@@ -321,21 +381,25 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>4 Capítulos</h3>
-          <ul>
-            <li>Princípios Gerais da Atividade Econômica</li>
-            <li>Política Urbana</li>
-            <li>Política Agrícola e Fundiária</li>
-            <li>Sistema Financeiro Nacional</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Princípios Gerais da Atividade Econômica</p>
+            <p>Política Urbana</p>
+            <p>Política Agrícola e Fundiária</p>
+            <p>Sistema Financeiro Nacional</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO VIII -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO VIII - Da Ordem Social</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 193 ao 232</span>
@@ -345,25 +409,30 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>8 Capítulos</h3>
-          <ul>
-            <li>Seguridade Social</li>
-            <li>Saúde</li>
-            <li>Previdência Social</li>
-            <li>Assistência Social</li>
-            <li>Educação, Cultura e Esporte</li>
-            <li>Ciência e Tecnologia</li>
-            <li>Meio Ambiente</li>
-            <li>Família, Criança, Adolescente, Idoso e Índios</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Seguridade Social</p>
+            <p>Saúde</p>
+            <p>Previdência Social</p>
+            <p>Assistência Social</p>
+            <p>Educação, Cultura e Esporte</p>
+            <p>Ciência e Tecnologia</p>
+            <p>Comunicação Social</p>
+            <p>Meio Ambiente</p>
+            <p>Família, Criança, Adolescente, Idoso e Índios</p>
+          </div>
+
         </div>
+
       </div>
 
       <!-- TITULO IX -->
       <div class="card">
+
         <div class="top">
           <h2>TÍTULO IX - Disposições Constitucionais Gerais</h2>
-          <input type="checkbox" class="check">
         </div>
 
         <span class="articles">Art. 233 ao 250</span>
@@ -373,11 +442,15 @@ ul{
         </div>
 
         <div class="chapters">
+
           <h3>Observação</h3>
-          <ul>
-            <li>Não possui divisões relevantes em capítulos.</li>
-          </ul>
+
+          <div class="chapter-box">
+            <p>Não possui divisões relevantes em capítulos.</p>
+          </div>
+
         </div>
+
       </div>
 
     </div>
@@ -389,19 +462,17 @@ ul{
   </div>
 
   <script>
-    const checks = document.querySelectorAll('.check');
 
-    checks.forEach(check => {
-      check.addEventListener('change', function(){
-        const card = this.closest('.card');
+    const cards = document.querySelectorAll('.card');
 
-        if(this.checked){
-          card.classList.add('completed');
-        } else {
-          card.classList.remove('completed');
-        }
+    cards.forEach(card => {
+
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
       });
+
     });
+
   </script>
 
 </body>
